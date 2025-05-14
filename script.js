@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchFeatureContent() {
         try {
             // Use the publish instance with your persisted query
-            const graphqlURL = 'https://publish-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments/feature-content-query';
+            const timestamp = new Date().getTime();
+            const graphqlURL = `https://publish-p123749-e1215043.adobeaemcloud.com/graphql/execute.json/Content-Fragments/feature-content-query?timestamp=${timestamp}`;
             
             console.log('Fetching from GraphQL:', graphqlURL);
             
