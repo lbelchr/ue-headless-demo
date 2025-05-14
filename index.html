@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEM Universal Editor Demo</title>
+    
+    <!-- Universal Editor CORS library -->
+    <script src="https://universal-editor-service.adobe.io/cors.js" async></script>
+    
+    <!-- AEM Connection -->
+    <meta name="urn:adobe:aue:system:aemconnection" content="aem:https://author-p123749-e1215043.adobeaemcloud.com">
+
+    <!-- Optional: Service Configuration -->
+    <meta name="urn:adobe:aue:config:service" content="https://universal-editor-service.adobe.io">
+        
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AEM Universal Editor Demo</h1>
+        <p>A simple demonstration of headless content editing</p>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to Our Demo</h2>
+            
+            <p>This content will be editable through the Universal Editor.</p>
+        </section>
+        
+        <section class="features" data-aue-resource="urn:aemconnection:/content/dam/viking-universal-editor/features" data-aue-type="container">
+            <div class="feature-card" data-aue-resource="urn:aemconnection:/content/dam/viking-universal-editor/features/feature1" data-aue-type="component">
+                <h3 data-aue-prop="title" data-aue-type="text">Feature 1</h3>
+                <p data-aue-prop="description" data-aue-type="richtext">Description of feature 1 that can be edited.</p>
+            </div>
+            
+            <div class="feature-card" data-aue-resource="urn:aemconnection:/content/dam/viking-universal-editor/features/feature2" data-aue-type="component">
+                <h3 data-aue-prop="title" data-aue-type="text">Feature 2</h3>
+                <p data-aue-prop="description" data-aue-type="richtext">Description of feature 2 that can be edited.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AEM Universal Editor Demo</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
