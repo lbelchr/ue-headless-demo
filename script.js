@@ -2,27 +2,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch content fragment data using infinity.json
     async function fetchContentFragment(path) {
         try {
-            // Remove the "urn:aemconnection:" prefix if present
             const cleanPath = path.replace('urn:aemconnection:', '');
+            const aemURL = 'https://author-p123749-e1215043.adobeaemcloud.com';
             
-            // Use the AEM infinity.json endpoint to get full content
-            const aemURL = 'https://author-p123749-e1215043.adobeaemcloud.com'; // Replace with your sandbox URL
+            console.log('Fetching from:', `${aemURL}${cleanPath}.infinity.json`);
+            
+            // Use withCredentials to send auth cookies
             const response = await fetch(`${aemURL}${cleanPath}.infinity.json`, {
                 method: 'GET',
-                mode: 'cors',
-                credentials: 'include',
+                credentials: 'include',  // Important for sending auth cookies
                 headers: {
                     'Accept': 'application/json'
-                }
+                },
+                redirect: 'follow'       // Follow redirects
             });
             
             if (!response.ok) {
+                console.error('Response not OK:', response.status, response.statusText);
                 throw new Error(`HTTP error ${response.status}`);
             }
             
             return await response.json();
         } catch (error) {
-            console.error(`Error fetching content fragment: ${error}`, path);
+            console.error(`Error fetching content fragment:`, error);
             return null;
         }
     }
